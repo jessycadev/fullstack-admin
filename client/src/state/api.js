@@ -7,9 +7,22 @@ export const api = createApi({
     endpoints: (build) => ({
         getUser: build.query({
             query: (id) => `general/user/${id}`,
-            providesTags: ["User"]
-        })
-    })
-})
+            providesTags: ["User"],
+        }),
+    }),
+});
 
-export const { userGetUserQuery } = api;
+console.log(process.env.REACT_APP_BASE_URL);
+
+// export const pokemonApi = createApi({
+//   reducerPath: 'pokemonApi',
+//   baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
+//   endpoints: (build) => ({
+//     getPokemonByName: build.query<Pokemon, string>({
+//       query: (name) => `pokemon/${name}`,
+//     }),
+//   }),
+// })
+
+
+export const { useGetUserQuery } = api;

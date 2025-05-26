@@ -33,17 +33,15 @@ app.use("/sales", salesRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
-console.log(process.env.PORT);
-console.log(process.env.MONGO_URL);
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
     .then(() => {
-        app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+        app.listen(PORT, () => console.log(`Porta do Servidor: ${PORT}`));
 
         /* ONLY ADD DATA ONE TIME */
         //User.insertMany(dataUser);
     })
-    .catch((error) => console.log(`${error} did not connect`));
+    .catch((error) => console.log(`${error} não foi possível conectar`));
