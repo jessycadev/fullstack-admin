@@ -39,7 +39,7 @@ mongoose
         useUnifiedTopology: true,
     })
     .then(() => {
-        app.listen(PORT, () => console.log(`Porta do Servidor: ${PORT}`));
+        app.listen(PORT, () => console.log(`URL do Servidor: ${process.env.MONGO_URL} | Porta do Servidor:  ${PORT}`));
 
         /* ONLY ADD DATA ONE TIME */
         //User.insertMany(dataUser);
