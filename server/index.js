@@ -12,7 +12,9 @@ import salesRoutes from "./routes/sales.js";
 
 // data imports
 import User from "./models/User.js";
-import { dataUser } from "./data/index.js";
+import {
+  dataUser
+} from "./data/index.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -39,9 +41,9 @@ mongoose
         useUnifiedTopology: true,
     })
     .then(() => {
-        app.listen(PORT, () => console.log(`URL do Servidor: ${process.env.MONGO_URL} | Porta do Servidor:  ${PORT}`));
+        app.listen(PORT, () => console.log(`Porta do Servidor:  ${PORT}`));
 
         /* ONLY ADD DATA ONE TIME */
-        //User.insertMany(dataUser);
+        User.insertMany(dataUser);
     })
     .catch((error) => console.log(`${error} não foi possível conectar`));

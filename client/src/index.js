@@ -17,6 +17,9 @@ const store = configureStore({
 });
 setupListeners(store.dispatch);
 
+console.log(api);
+console.log(setupListeners(store.dispatch));
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
