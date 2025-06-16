@@ -6,8 +6,6 @@ const initialState = {
     userId: "63701cc1f03239b7f700000e",
 };
 
-console.log(initialState);
-
 export const globalSlice = createSlice({
     name: "global",
     initialState,

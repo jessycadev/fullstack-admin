@@ -12,8 +12,12 @@ import salesRoutes from "./routes/sales.js";
 
 // data imports
 import User from "./models/User.js";
+import Product from "./models/Product.js";
+import ProductStat from "./models/ProductStat.js";
 import {
-  dataUser
+  dataUser,
+  dataProduct,
+  dataProductStat
 } from "./data/index.js";
 
 /* CONFIGURATION */
@@ -36,14 +40,19 @@ app.use("/sales", salesRoutes);
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
 mongoose
-    .connect(process.env.MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => {
-        app.listen(PORT, () => console.log(`Porta do Servidor:  ${PORT}`));
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-        /* ONLY ADD DATA ONE TIME */
-        User.insertMany(dataUser);
-    })
-    .catch((error) => console.log(`${error} não foi possível conectar`));
+    /* ONLY ADD DATA ONE TIME */
+    // AffiliateStat.insertMany(dataAffiliateStat);
+    // OverallStat.insertMany(dataOverallStat);
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
+    // Transaction.insertMany(dataTransaction);
+    // User.insertMany(dataUser);
+  })
+  .catch((error) => console.log(`${error} did not connect`));
