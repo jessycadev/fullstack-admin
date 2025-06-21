@@ -50,7 +50,7 @@ export const getTransactions = async (req, res) => {
         };
         const sortFormatted = Boolean(sort) ? generateSort() : {};
 
-        const transactions = await Transactions.find({
+        const transactions = await Transaction.find({
             $or: [
                 { cost: { $regex: new RegExp(search, "i") } },
                 { userId: { $regex: new RegExp(search, "i") } },

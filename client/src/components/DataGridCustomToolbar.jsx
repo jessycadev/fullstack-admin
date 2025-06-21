@@ -2,21 +2,31 @@ import React from "react";
 import { Search } from "@mui/icons-material";
 import { IconButton, TextField, InputAdornment } from "@mui/material";
 import {
-    GridToolbarDensitySelector,
-    GridToolbarContainer,
-    GridToolbarExport,
-    GridToolbarColumnsButton,
+    gridDensitySelector,
+    Toolbar,
+    ExportCsv,
+    ColumnsPanelTrigger,
+    ToolbarButton,
+    DataGrid,
+    ExportPrint,
 } from "@mui/x-data-grid";
 import FlexBetween from "./FlexBetween";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import PrintIcon from '@mui/icons-material/Print';
 
 const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
     return (
-        <GridToolbarContainer>
+        <Toolbar>
             <FlexBetween width="100%">
                 <FlexBetween>
-                    <GridToolbarColumnsButton />
-                    <GridToolbarDensitySelector />
-                    <GridToolbarExport />
+                    <ColumnsPanelTrigger />
+                    <gridDensitySelector />
+                    <ExportCsv render={<ToolbarButton />}>
+                        <FileDownloadIcon fontSize="small" />
+                    </ExportCsv>
+                    <ExportPrint render={<ToolbarButton />}>
+                        <PrintIcon fontSize="small" />
+                    </ExportPrint>
                 </FlexBetween>
                 <TextField
                     label="Search..."
@@ -24,7 +34,7 @@ const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
                     onChange={(e) => setSearchInput(e.target.value)}
                     value={searchInput}
                     variant="standard"
-                    InputProps={{
+                    slotProps={{
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton
@@ -40,8 +50,9 @@ const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
                     }}
                 />
             </FlexBetween>
-        </GridToolbarContainer>
+        </Toolbar>
     );
 };
 
 export default DataGridCustomToolbar;
+
