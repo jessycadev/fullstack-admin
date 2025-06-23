@@ -22976,3 +22976,16 @@ export const dataAffiliateStat = [
       role: "admin",
     },
   ];
+
+    export const dadosQuartos = [
+    {
+      _id: "63701d24f03239c72c00018e",
+      identificados: "1",
+      ocupanteId: dataUser._id,
+      ocupanteNome: dataUser.name,
+      alojamento: "bill",
+      status: "ocupado",
+      dataEntrada: 1.15,
+      dataSaida: 1320,
+    }
+  ];
