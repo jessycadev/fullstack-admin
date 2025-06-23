@@ -58,6 +58,6 @@ mongoose
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
     // User.insertMany(dataUser);
-    Quarto.insertMany(dadosQuartos);
+    // Quarto.insertMany(dadosQuartos);
   })
   .catch((error) => console.log(`${error} did not connect`));
