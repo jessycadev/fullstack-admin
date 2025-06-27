@@ -16,12 +16,14 @@ import Product from "./models/Product.js";
 import ProductStat from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
 import Quarto from "./models/Quarto.js";
+import Usuarios from "./models/Usuarios.js";
 import {
   dataUser,
   dataProduct,
   dataProductStat,
   dataTransaction,
-  dadosQuartos
+  dadosQuartos,
+  dadosUsuarios
 } from "./data/index.js";
 
 /* CONFIGURATION */
@@ -59,5 +61,6 @@ mongoose
     // Transaction.insertMany(dataTransaction);
     // User.insertMany(dataUser);
     // Quarto.insertMany(dadosQuartos);
+    // Usuarios.insertMany(dadosUsuarios);
   })
   .catch((error) => console.log(`${error} did not connect`));

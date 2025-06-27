@@ -9,6 +9,7 @@ import Dashboard from "scenes/dashboard";
 import Products from "scenes/products";
 import Costumers from "scenes/customers";
 import Transactions from "scenes/transactions";
+import Quartos from "scenes/quartos";
 
 
 function App() {
@@ -22,11 +23,12 @@ function App() {
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
-              <Route path="/dashboard" element={<Dashboard /> } />
-              <Route path="/products" element={<Products /> } />
-              <Route path="/customers" element={<Costumers /> } />
-              <Route path="/transactions" element={<Transactions /> } />
-              
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/customers" element={<Costumers />} />
+              <Route path="/transactions" element={<Transactions />} />
+              <Route path="/bill" element={<Quartos />} />
+
             </Route>
           </Routes>
         </ThemeProvider>
