@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import Header from "components/Header";
 import { useGetQuartosQuery } from "state/api";
-import { useGetUserQuery } from "state/api";
 
 const Quarto = ({
     _id,
@@ -41,10 +40,10 @@ const Quarto = ({
                     color={theme.palette.secondary[700]}
                     gutterBottom
                 >
-                {status}
+                    {status}
                 </Typography>
                 <Typography variant="h5" component="div">
-                Número do Quarto: {identificador}
+                    Número do Quarto: {identificador}
                 </Typography>
                 <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
                     {alojamento}
@@ -87,8 +86,9 @@ const Quarto = ({
 
 const Quartos = () => {
     const { data, isLoading } = useGetQuartosQuery();
-    const { dadosUsuario } = useGetUserQuery();
     const isNonMobile = useMediaQuery("(min-width: 1000px)");
+
+    console.logo(data);
 
     return (
         <Box m="1.5rem 2.5rem">
@@ -109,6 +109,7 @@ const Quartos = () => {
                         ({
                             _id,
                             identificador,
+                            ocupante_Id,
                             alojamento,
                             status,
                             dataEntrada,
@@ -117,6 +118,7 @@ const Quartos = () => {
                             <Quarto
                                 key={_id}
                                 _id={_id}
+                                ocupante_Id={ocupante_Id}
                                 identificador={identificador}
                                 alojamento={alojamento}
                                 status={status}

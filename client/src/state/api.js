@@ -8,8 +8,8 @@ export const api = createApi({
         "Products",
         "Customers",
         "Transactions",
+        "Bill",
         "Usuarios",
-        "Bill"
     ],
     endpoints: (build) => ({
         getUser: build.query({
@@ -36,6 +36,10 @@ export const api = createApi({
             query: () => "client/bill",
             providesTags: ["Bill"],
         }),
+        getUsuarios: build.query({
+            query: () => "client/usuarios",
+            providesTags: ["Usuarios"],
+        }),
     }),
 });
 
@@ -44,5 +48,7 @@ export const {
     useGetProductsQuery,
     useGetCustomersQuery,
     useGetTransactionsQuery,
-    useGetQuartosQuery
+    useGetQuartosQuery,
+    useGetUsuariosQuery
 } = api;
+

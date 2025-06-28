@@ -87,7 +87,8 @@ export const getUsuarios = async (req, res) => {
 export const getQuartos = async (req, res) => {
     try {
         const quartos = await Quarto.find({ alojamento: "bill" });
-        res.status(200).json(quartos);
+        const usuarios = await Usuarios.find({ escala: "B" }).select("-password");
+        res.status(200).json({quartos, usuarios});
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
