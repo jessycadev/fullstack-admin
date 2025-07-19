@@ -46,8 +46,8 @@ const Quarto = ({
                     {alojamento}
                 </Typography>
 
-                <Typography variant="body2">Data Entrada:</Typography>
-                <Typography variant="body2">Data Saída:</Typography>
+                <Typography variant="body2">Ocupante: {usuario[0].name} </Typography>
+                <Typography variant="body2">Cargo: {usuario[0].occupation} </Typography>
             </CardContent>
             <CardActions>
                 <Button

@@ -76,21 +76,20 @@ export const getTransactions = async (req, res) => {
 
 export const getQuartos = async (req, res) => {
     try {
-        const usuarios = await User.find();
+        const quartos = await Quarto.find();
 
-        const usuarioComQuarto = await Promise.all(
-            usuarios.map(async (usuario) => {
-                const quarto = await Quarto.find({
-                    id_usuario: usuario._id,
+        const quartoComUsuario = await Promise.all(
+            quartos.map(async (quarto) => {
+                const usuario = await User.find({
+                    _id: quarto.idUsuario,
                 });
                 return {
-                    ...usuario._doc,
-                    quarto,
+                    ...quarto._doc,
+                    usuario
                 };
             })
         );
-
-        res.status(200).json(usuarioComQuarto);
+        res.status(200).json(quartoComUsuario);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
