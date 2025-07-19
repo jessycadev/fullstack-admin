@@ -2,7 +2,6 @@ import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
 import User from "../models/User.js";
 import Transaction from "../models/Transaction.js";
-import Usuarios from "../models/Usuarios.js";
 import Quarto from "../models/Quarto.js";
 
 export const getProducts = async (req, res) => {
@@ -75,20 +74,23 @@ export const getTransactions = async (req, res) => {
     }
 };
 
-export const getUsuarios = async (req, res) => {
-    try {
-        const usuarios = await Usuarios.find({ escala: "B" }).select("-password");
-        res.status(200).json(usuarios);
-    } catch (error) {
-        res.status(404).json({ message: error.message });
-    }
-};
-
 export const getQuartos = async (req, res) => {
     try {
-        const quartos = await Quarto.find({ alojamento: "bill" });
-        const usuarios = await Usuarios.find({ escala: "B" }).select("-password");
-        res.status(200).json({quartos, usuarios});
+        const usuarios = await User.find();
+
+        const usuarioComQuarto = await Promise.all(
+            usuarios.map(async (usuario) => {
+                const quarto = await Quarto.find({
+                    id_usuario: usuario._id,
+                });
+                return {
+                    ...usuario._doc,
+                    quarto,
+                };
+            })
+        );
+
+        res.status(200).json(usuarioComQuarto);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

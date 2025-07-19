@@ -15,17 +15,14 @@ import { useGetQuartosQuery } from "state/api";
 
 const Quarto = ({
     _id,
-    identificador,
-    ocupante_Id,
+    idQuarto,
     alojamento,
     status,
-    dataEntrada,
-    dataSaida,
+    usuario
 
 }) => {
     const theme = useTheme();
     const [isExpanded, setIsExpanded] = useState(false);
-
     return (
         <Card
             sx={{
@@ -43,14 +40,14 @@ const Quarto = ({
                     {status}
                 </Typography>
                 <Typography variant="h5" component="div">
-                    Número do Quarto: {identificador}
+                    Número do Quarto: {idQuarto}
                 </Typography>
                 <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
                     {alojamento}
                 </Typography>
 
-                <Typography variant="body2">Data Entrada: {dataEntrada}</Typography>
-                <Typography variant="body2">Data Saída: {dataSaida}</Typography>
+                <Typography variant="body2">Data Entrada:</Typography>
+                <Typography variant="body2">Data Saída:</Typography>
             </CardContent>
             <CardActions>
                 <Button
@@ -73,10 +70,10 @@ const Quarto = ({
                     <Typography>id: {_id}</Typography>
                     <Typography>Supply Left: {status}</Typography>
                     <Typography>
-                        Yearly Sales This Year: {dataEntrada}
+                        Yearly Sales This Year: 
                     </Typography>
                     <Typography>
-                        Yearly Units Sold This Year: {dataSaida}
+                        Yearly Units Sold This Year:
                     </Typography>
                 </CardContent>
             </Collapse>
@@ -87,8 +84,7 @@ const Quarto = ({
 const Quartos = () => {
     const { data, isLoading } = useGetQuartosQuery();
     const isNonMobile = useMediaQuery("(min-width: 1000px)");
-
-    console.logo(data);
+    console.log(data);
 
     return (
         <Box m="1.5rem 2.5rem">
@@ -108,22 +104,18 @@ const Quartos = () => {
                     {data.map(
                         ({
                             _id,
-                            identificador,
-                            ocupante_Id,
+                            idQuarto,
                             alojamento,
                             status,
-                            dataEntrada,
-                            dataSaida,
+                            usuario
                         }) => (
                             <Quarto
                                 key={_id}
                                 _id={_id}
-                                ocupante_Id={ocupante_Id}
-                                identificador={identificador}
+                                idQuarto={idQuarto}
                                 alojamento={alojamento}
                                 status={status}
-                                dataEntrada={dataEntrada}
-                                dataSaida={dataSaida}
+                                usuario={usuario}
                             />
                         )
                     )}
