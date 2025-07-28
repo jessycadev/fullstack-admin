@@ -40,7 +40,7 @@ const Quarto = ({
                     {status}
                 </Typography>
                 <Typography variant="h5" component="div">
-                    Número do Quarto: {idQuarto}
+                    Número: {idQuarto}
                 </Typography>
                 <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
                     {alojamento}
@@ -48,6 +48,9 @@ const Quarto = ({
 
                 <Typography variant="body2">Ocupante: {usuario[0].name} </Typography>
                 <Typography variant="body2">Cargo: {usuario[0].occupation} </Typography>
+                <Typography variant="body2">Escala: </Typography>
+                <Typography variant="body2">Data Entrada: </Typography>
+                <Typography variant="body2">Data Saída: </Typography>
             </CardContent>
             <CardActions>
                 <Button
@@ -70,7 +73,7 @@ const Quarto = ({
                     <Typography>id: {_id}</Typography>
                     <Typography>Supply Left: {status}</Typography>
                     <Typography>
-                        Yearly Sales This Year: 
+                        Yearly Sales This Year:
                     </Typography>
                     <Typography>
                         Yearly Units Sold This Year:

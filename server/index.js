@@ -9,6 +9,7 @@ import clientRoutes from "./routes/client.js";
 import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
+import authRouter from "./routes/authRouter.js";
 
 // data imports
 import User from "./models/User.js";
@@ -23,6 +24,7 @@ import {
   dataTransaction,
   dadosQuartos
 } from "./data/index.js";
+import router from "./routes/client.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -40,6 +42,9 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
+
+/* LOGIN ROUTES */
+app.use("/auth", authRouter);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
